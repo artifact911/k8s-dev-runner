@@ -1,0 +1,31 @@
+---
+# file: practice/2.application-abstractions/3.deployment/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 2
+#  стратегия обновления подов.
+#  maxSurge - на сколько больше нормы подов мы можем поднять во время обновления
+#  maxUnavailable - на сколько можем снизить. В данном случае будет так
+  strategy:
+    rollingUpdate:
+#    можно сделать на 1 под больше запрошенного, во время rollingUpdate
+      maxSurge: 1
+#      нельзя опускать ни на один под во ремя обновления
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - image: quay.io/testing-farm/nginx:1.12
+        name: nginx
+        ports:
+        - containerPort: 80
+...

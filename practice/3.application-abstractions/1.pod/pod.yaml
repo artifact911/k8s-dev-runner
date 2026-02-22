@@ -1,0 +1,18 @@
+---
+# file: practice/2.application-abstractions/1.pod/pod.yaml
+# Версионирование от куба
+apiVersion: v1
+# Тип создаваемого инстанса
+kind: Pod
+# Разная метадата, в данном стучае имя пода
+metadata:
+  name: my-pod-1
+# Спека. Обратит внимание на порт. Это не порт, который беально будет прослушиваться, я могу его заменить в приложении.
+#  Это способ документации
+spec:
+  containers:
+  - image: quay.io/testing-farm/nginx:1.12
+    name: nginx
+    ports:
+    - containerPort: 80
+...
