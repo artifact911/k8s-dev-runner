@@ -21,6 +21,7 @@ spec:
       containers:
       - image: quay.io/testing-farm/nginx:1.12
         name: nginx
+#        В результате этого деполя, у нас в котейнере появится переменная окружения с именем TEST
         env:
         - name: TEST
           value: foo

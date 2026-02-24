@@ -28,7 +28,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: test
-              key: test1
+              key: test
         - name: __NODE_NAME
           valueFrom:
             fieldRef:
